@@ -1,11 +1,5 @@
-import React from 'react';
-  
-  const Helper = () =>  {
-	return (
-	  <div>
-	  </div>
-	);
-  }
-  
-  export default Helper;
+export const validateEmail = (email) =>{
+	const regex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return regex.test(email);
+}
   
