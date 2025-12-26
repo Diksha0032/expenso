@@ -18,7 +18,7 @@ import Expense from './pages/DashBoard/Expense';
 
 const App=()=>{
   return(
-    <div className=''>
+    <div className='bg-[#F0FDFA]'>
       <Router>
         <Routes>
           <Route path="/" element={<Root />} />

@@ -5,6 +5,7 @@ import Input from '../../components/layouts/Inputs/Input'
 import { Link } from 'react-router-dom'
 import { validateEmail } from '../../utils/helper'
 import SignUp from './SignUp'
+
 const Login=()=>{
   const[email,setEmail] =useState("");
   const[password,setPassword]=useState("");
@@ -26,9 +27,9 @@ const Login=()=>{
   }
   return(
     <AuthLayout>
-      <div className='lg:w-[70%] h-3/4 md:h-full flex flex-col justify-center'>
-        <h3 className='text-xl font-semibold text-black'>Welcome Back</h3>
-        <p className='text-0.5xl text-slate-700 mt-5 mb-6'>
+      <div className='h-3/4 md:h-full flex flex-col justify-center'>
+        <h3 className='text-teal-950 text-xl font-semibold text-black'>Welcome Back</h3>
+        <p className='text-teal-950 text-0.5xl mt-5 mb-6'>
           Please enter your details to log in
         </p>
 
@@ -38,7 +39,7 @@ const Login=()=>{
           value={email}
           onChange={({ target }) => setEmail(target.value)}
           label="Email Address"
-          placeholder="john@example.com"
+          placeholder="jamesbond@example.com"
           type="text" />
                   
           <Input 
@@ -51,10 +52,10 @@ const Login=()=>{
 
           {error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
 
-          <button type="submit" className='btn-primary'>LOGIN</button>
+          <button type="submit" className='btn-primary bg-teal-600'>LOGIN</button>
 
           <p className='text-[13px] text-slate-800 mt-3'>Don't have an account?{""}
-            <Link className="font-medium text-primary underline" to="/signup"> Sign Up</Link>
+            <Link className="text-teal-950 font-medium text-primary underline" to="/signup"> Sign Up</Link>
           </p>
         </form>
       </div>
