@@ -1,8 +1,3 @@
-const path=require('path')
-require('dotenv').config({path:path.resolve(__dirname,'../../.env')})
-
- console.log("Checking MONGO_URL:", process.env.MONGO_URL ? "Found! ✅" : "Not Found ❌");
-
 const mongoose=require("mongoose");
 
 const connectDB=async () => {
