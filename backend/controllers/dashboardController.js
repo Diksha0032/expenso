@@ -30,20 +30,23 @@ exports.getDashboardData=async(req,res)=>{
     }).sort({date:-1})
 
     const expenseLast30Days=last30DaysExpenseTransactions.reduce((sum,transaction)=>sum+transaction.amount,0)
+  
+  const[recentIncomes,recentExpenses]=await Promise.all([
+    Income.find({userId}).sort({date:-1}).limit(10),
+    Expense.find({userId}).sort({date:-1}).limit(10)
+  ])
 
-     const lastTransactions=[
-    ...(await Income.find({userId}).sort({date:-1}).limit(10)).map(
-      (tsn)=>({
-        ...tsn.toObject(),
-        type:"expense",
-      })
-    ),...(await Income.find({userId}).sort({date:-1}).limit(10)).map(
-      (tsn)=>({
-        ...tsn.toObject(),
-        type:"expense",
-      })
-    ),
-  ].sort((a,b)=>b.date-a.date);
+  const lastTransactions=[
+    ...recentIncomes.map((tsn)=>({
+      ...tsn.toObject(),
+      type:"income",
+    })),
+    ...recentExpenses.map((tsn)=>({
+      ...tsn.toObject(),
+      type:"expense",
+    }))
+  ].sort((a,b)=> new Date(b.date)-new Date(a.date)).slice(0,10);
+  
   res.json({
     totalBalance:(totalIncome[0]?.total || 0) - (totalExpense[0]?.total || 0),
     totalIncome:totalIncome[0]?.total || 0,
