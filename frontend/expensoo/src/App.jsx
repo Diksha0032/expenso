@@ -6,6 +6,7 @@ import Login from "./pages/Auth/Login";
 import SignUp from './pages/Auth/SignUp';
 import Income from './pages/DashBoard/Income';
 import Expense from './pages/DashBoard/Expense';
+import UserProvider from './context/userContext';
 
  const Root=()=>{
   const isAuthenticated=!!localStorage.getItem("token")
@@ -18,7 +19,8 @@ import Expense from './pages/DashBoard/Expense';
 
 const App=()=>{
   return(
-    <div className='bg-[#F0FDFA]'>
+    <UserProvider>
+      <div className='bg-[#F0FDFA]'>
       <Router>
         <Routes>
           <Route path="/" element={<Root />} />
@@ -30,6 +32,7 @@ const App=()=>{
         </Routes>
       </Router>
       </div>
+    </UserProvider>
   )
 } 
 

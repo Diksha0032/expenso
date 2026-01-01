@@ -5,6 +5,10 @@ import Input from '../../components/layouts/Inputs/Input'
 import { Link } from 'react-router-dom'
 import { validateEmail } from '../../utils/helper'
 import { useState } from 'react'
+import axiosInstance from '../../utils/axiosInstance'
+import { API_PATHS } from '../../utils/apiPaths'
+import { useContext } from 'react'
+import { UserContext } from '../../context/userContext'
 
 const SignUp = () => {
   const [fullName, setFullName] = useState("")
@@ -12,6 +16,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("")
 
   const [error, setError] = useState(null)
+  const{updateUser}=useContext(UserContext)
   const navigate = useNavigate()
 
   const handleSignUp = async (e) => {
@@ -31,6 +36,26 @@ const SignUp = () => {
           return;
         }
         setError("");
+
+        try{
+          const response=await axiosInstance.post(API_PATHS.AUTH.REGISTER,{
+            fullName,email,password,
+          })
+
+          const {token,user}=response.data;
+
+          if(token){
+            localStorage.setItem("token",token);
+            updateUser(user);
+            navigate("/dashboard")
+          }
+        }catch{
+           if(error.response && error.response.data.message){
+        setError(error.response.data.message);
+      }else{
+        setError("Something  went wrong.Please try again")
+      }
+        }
   }
   return (
     <AuthLayout>

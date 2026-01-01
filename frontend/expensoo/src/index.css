@@ -28,6 +28,9 @@
   @apply w-full text-sm font-medium text-white bg-teal-600 p-[10px] rounded-md my-1 hover:bg-teal-500
 }
 
-.header{
-  
+.card{
+  @apply bg-teal-200 p-6 rounded-xl shadow-md shadow-teal-50 border border-teal-100
+}
+.card-btn{
+  @apply flex items-center gap-3 text-[12px] font-medium text-teal-700 hover:text-teal-950 bg-teal-100 hover:bg-teal-200 px-4 py-1.5 rounded-lg cursor-pointer
 }
