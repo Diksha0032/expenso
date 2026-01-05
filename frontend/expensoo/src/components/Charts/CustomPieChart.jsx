@@ -7,6 +7,8 @@ import{
   ResponsiveContainer,
   Legend,} from "recharts"
   import FinanceOverview from '../layouts/Dashboard/FinanceOverview'
+  import CustomTooltip from './CustomTooltip'
+  import CustomLegend from './CustomLegend'
 
 const CustomPieChart=({
   data,label,totalAmount,colors,showTextAnchor,
@@ -25,8 +27,8 @@ const CustomPieChart=({
           <Cell key={`cell-${index}`} fill={colors[index%colors.length]} />
         ))}
       </Pie>
-      <Tooltip />
-      <Legend />
+      <Tooltip content={<CustomTooltip />} />
+      <Legend content={<CustomLegend />}/>
 
       {showTextAnchor && (
         <>

@@ -4,6 +4,7 @@ const {isValidObjectId,Types}=require("mongoose")
 
 exports.getDashboardData=async(req,res)=>{
   try{
+
     const userId=req.user.id;
     const userObjectId=new Types.ObjectId(String(userId));
 
@@ -13,27 +14,30 @@ exports.getDashboardData=async(req,res)=>{
     ])
 
     console.log("totalIncome",{totalIncome,userId:isValidObjectId(userId)})
+    console.log("Looking for User:", userObjectId);
+console.log("Raw count in DB:", await Expense.countDocuments({ userId: userObjectId }));
 
      const totalExpense=await Expense.aggregate([
       {$match:{userId:userObjectId}},
       {$group:{_id:null,total:{$sum:"$amount"}}}
+      
     ])
 
     const last30DaysIncomeTransactions=await Income.find({
-      userId,date:{$gte:Date.now()-30*24*60*60*1000}
+      userId:userObjectId,date:{$gte:new Date(Date.now()-30*24*60*60*1000)}
     }).sort({date:-1})
 
     const incomeLast30Days=last30DaysIncomeTransactions.reduce((sum,transaction)=>sum+transaction.amount,0)
 
     const last30DaysExpenseTransactions=await Expense.find({
-      userId,date:{$gte:Date.now()-30*24*60*60*1000}
+      userId:userObjectId,date:{$gte:new Date(Date.now()-30*24*60*60*1000)}
     }).sort({date:-1})
 
     const expenseLast30Days=last30DaysExpenseTransactions.reduce((sum,transaction)=>sum+transaction.amount,0)
   
   const[recentIncomes,recentExpenses]=await Promise.all([
-    Income.find({userId}).sort({date:-1}).limit(10),
-    Expense.find({userId}).sort({date:-1}).limit(10)
+    Income.find({userId:userObjectId}).sort({date:-1}).limit(10),
+    Expense.find({userId:userObjectId}).sort({date:-1}).limit(10)
   ])
 
   const lastTransactions=[
@@ -61,7 +65,7 @@ exports.getDashboardData=async(req,res)=>{
     },
     recentTransactions:lastTransactions,
   })
-  }catch{
-    res.status(500).json({message:"Server Error"})
+  }catch(error){
+    res.status(500).json({message:"Server Error",error})
   }
 }

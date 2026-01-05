@@ -9,10 +9,10 @@ const RecentTransactions=({transactions,onSeeMore})=>{
         <h5 className='text-teal-900 text-lg'>Recent Transactions
         </h5>
 
-        <button className="card-btn" onClick={onSeeMore}>See All <LuArrowRight className='text-base' /></button>
+        <button className="card-btn border-teal-300" onClick={onSeeMore}>See All <LuArrowRight className='text-base' /></button>
       </div>
 
-      <div className='mt-6'>
+      <div className='mt-6 bg-teal-100 border rounded-xl border-teal-300'>
       
         {transactions?.slice(0,5)?.map((item)=>{
         return(
