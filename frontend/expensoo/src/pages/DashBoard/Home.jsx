@@ -9,6 +9,7 @@ import { API_PATHS } from '../../utils/apiPaths';
 import RecentTransactions from '../../components/layouts/Dashboard/RecentTransactions';
 import { useUserAuth } from "../../hooks/useUserAuth"
 import FinanceOverview from '../../components/layouts/Dashboard/FinanceOverview';
+import RecentIncomeWithChart from '../../components/layouts/Dashboard/RecentIncomeWithChart';
 import ExpenseTransactions from '../../components/Cards/ExpenseTransactions';
 
 const Home = () => {
@@ -74,10 +75,14 @@ const Home = () => {
               <RecentTransactions transactions={dashboardData?.recentTransactions}
                 onSeeMore={() => navigate("/expense")} />
             </section>
-            <section className=''>
+            <section className='pt-3'>
               <FinanceOverview totalBalance={dashboardData?.totalBalance || 0}
         totalIncome={dashboardData?.totalIncome || 0}
         totalExpense={dashboardData?.totalExpense || 0} />
+            </section>
+            <section className='pt-3'>
+              <RecentIncomeWithChart data={dashboardData?.last30DaysIncome?.transactions?.slice(0,4) || []}
+              totalIncome={dashboardData?.totalIncome || 0} />
             </section>
           </div>
         </>

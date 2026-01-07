@@ -13,10 +13,6 @@ exports.getDashboardData=async(req,res)=>{
       {$group:{_id:null,total:{$sum:"$amount"}}}
     ])
 
-    console.log("totalIncome",{totalIncome,userId:isValidObjectId(userId)})
-    console.log("Looking for User:", userObjectId);
-console.log("Raw count in DB:", await Expense.countDocuments({ userId: userObjectId }));
-
      const totalExpense=await Expense.aggregate([
       {$match:{userId:userObjectId}},
       {$group:{_id:null,total:{$sum:"$amount"}}}

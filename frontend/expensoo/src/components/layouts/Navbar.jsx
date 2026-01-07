@@ -10,8 +10,8 @@ const Navbar=()=>{
         <div className='bg-teal-100 pt-5 pb-5 pl-5'>
           <ul className='font-semibold text-teal-800 flex gap-2 lg:gap-10 sm:gap-4 md:gap-7 pr-3'>
           <Link to='/dashboard'><li>Dashboard</li></Link>
-          <li>Income</li>
-          <li>Expense</li>
+          <Link to='/income'><li>Income</li></Link>
+          <Link to='/expense'><li>Expense</li></Link>
         </ul>
         </div>
       </nav>
