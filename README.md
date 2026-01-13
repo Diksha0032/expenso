@@ -18,8 +18,10 @@ User Accounts: Create an account and log in securely.
 Privacy: Your financial data is protected and only accessible after you log in.
 
 Login & Signup Preview
-<img width="625" height="868" alt="Screenshot 2026-01-13 213127" src="https://github.com/user-attachments/assets/2a13903b-e8b6-4c94-8193-fb14c8769a5b" />
-<img width="622" height="868" alt="Screenshot 2026-01-13 213340" src="https://github.com/user-attachments/assets/3c6657fa-57f1-40e7-9ab2-d0d22f420256" />
+
+
+| <img width="200" height="200" alt="Screenshot 2026-01-13 213127" src="https://github.com/user-attachments/assets/2a13903b-e8b6-4c94-8193-fb14c8769a5b" /> |
+<img width="200" height="200" alt="Screenshot 2026-01-13 213340" src="https://github.com/user-attachments/assets/3c6657fa-57f1-40e7-9ab2-d0d22f420256" /> |
 📊 Dashboard
 Summary: See your total balance, total income, and total expenses in one place.
 
