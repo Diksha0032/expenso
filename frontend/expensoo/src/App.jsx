@@ -7,6 +7,7 @@ import SignUp from './pages/Auth/SignUp';
 import Income from './pages/DashBoard/Income';
 import Expense from './pages/DashBoard/Expense';
 import UserProvider from './context/userContext';
+import {Toaster} from 'react-hot-toast'
 
  const Root=()=>{
   const isAuthenticated=!!localStorage.getItem("token")
@@ -32,6 +33,14 @@ const App=()=>{
         </Routes>
       </Router>
       </div>
+      <Toaster 
+        toastOptions={{
+          className:"",
+          style:{
+            fontSize:"13px"
+          },
+        }}
+        />
     </UserProvider>
   )
 } 

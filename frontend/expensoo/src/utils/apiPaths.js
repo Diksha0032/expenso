@@ -19,6 +19,6 @@ export const API_PATHS={
     ADD_EXPENSE:"/api/v1/auth/expense/add",
     GET_ALL_EXPENSE:"/api/v1/auth/expense/get",
     DELETE_EXPENSE:(expenseId)=> `/api/v1/auth/expense/${expenseId}`,
-    DOWNLOAD_INCOME: `/api/v1/auth/expense/download`
+    DOWNLOAD_EXPENSE: `/api/v1/auth/expense/download`
   }
 }

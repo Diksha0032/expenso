@@ -75,7 +75,7 @@ const Home = () => {
               <RecentTransactions transactions={dashboardData?.recentTransactions}
                 onSeeMore={() => navigate("/expense")} />
             </section>
-            <section className='pt-3'>
+            <section className='pt-6'>
               <FinanceOverview totalBalance={dashboardData?.totalBalance || 0}
         totalIncome={dashboardData?.totalIncome || 0}
         totalExpense={dashboardData?.totalExpense || 0} />
@@ -83,7 +83,8 @@ const Home = () => {
             <section className='pt-3'>
               <RecentIncomeWithChart data={dashboardData?.last30DaysIncome?.transactions?.slice(0,4) || []}
               totalIncome={dashboardData?.totalIncome || 0} />
-            </section>
+            </section>  
+
           </div>
         </>
       )}
