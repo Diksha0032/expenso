@@ -49,8 +49,8 @@ UI Elements: Emoji Picker, Lucide Icons
 
 | Login | Signup |
 |----------------|-----------|
-| ![Login](./frontend/expensoo/assets/screenshots/login.png) | ![Signup](./frontend/expensoo/assets/screenshots/signup.png) |
+| ![Login](frontend/expensoo/assets/screenshots/login.png) | ![Signup](frontend/expensoo/assets/screenshots/signup.png) |
 
 | Dashboard | Income |
 |--------------|--------------|
-| ![Dashboard](./frontend/expensoo/assets/screenshots/dashboard.png) | ![Income](./assets/screenshots/income.png) |
+| ![Dashboard](frontend/expensoo/assets/screenshots/dashboard.png) | ![Income](frontend/expensoo/assets/screenshots/income.png) |
